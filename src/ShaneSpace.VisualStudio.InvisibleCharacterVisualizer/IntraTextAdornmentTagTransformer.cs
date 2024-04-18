@@ -63,11 +63,11 @@ namespace ShaneSpace.VisualStudio.InvisibleCharacterVisualizer
                 yield break;
             }
 
-            ITextSnapshot snapshot = spans[0].Snapshot;
+            var snapshot = spans[0].Snapshot;
 
-            foreach (IMappingTagSpan<TDataTag> dataTagSpan in DataTagger.GetTags(spans))
+            foreach (var dataTagSpan in DataTagger.GetTags(spans))
             {
-                NormalizedSnapshotSpanCollection dataTagSpans = dataTagSpan.Span.GetSpans(snapshot);
+                var dataTagSpans = dataTagSpan.Span.GetSpans(snapshot);
 
                 // Ignore data tags that are split by projection.
                 // This is theoretically possible but unlikely in current scenarios.
@@ -76,9 +76,9 @@ namespace ShaneSpace.VisualStudio.InvisibleCharacterVisualizer
                     continue;
                 }
 
-                SnapshotSpan span = dataTagSpans[0];
+                var span = dataTagSpans[0];
 
-                PositionAffinity? affinity = span.Length > 0 ? null : AdornmentAffinity;
+                var affinity = span.Length > 0 ? null : AdornmentAffinity;
 
                 yield return Tuple.Create(span, affinity, dataTagSpan.Tag);
             }
@@ -86,8 +86,8 @@ namespace ShaneSpace.VisualStudio.InvisibleCharacterVisualizer
 
         private void HandleDataTagsChanged(object sender, TagsChangedEventArgs args)
         {
-            NormalizedSnapshotSpanCollection changedSpans = args.Span.GetSpans(View.TextBuffer.CurrentSnapshot);
-            InvalidateSpans(changedSpans);
+            var changedSpans = args.Span.GetSpans(View.TextBuffer.CurrentSnapshot);
+            _ = InvalidateSpansAsync(changedSpans);
         }
     }
 }

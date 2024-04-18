@@ -6,19 +6,20 @@ namespace ShaneSpace.VisualStudio.InvisibleCharacterVisualizer
 {
     internal sealed class InvisibleCharacterAdornment : Button
     {
-        internal InvisibleCharacterAdornment(InvisibleCharacterTag nonAsciiTag)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InvisibleCharacterAdornment"/> class.
+        /// </summary>
+        internal InvisibleCharacterAdornment(InvisibleCharacterTag invisibleCharacterTag)
         {
-            var text = nonAsciiTag.Text.ToHex();
+            var text = invisibleCharacterTag.Text.ToHex();
 
             Content = new TextBlock
             {
                 Text = text,
                 Background = Brushes.Red,
                 Foreground = Brushes.White,
-                Padding = new Thickness(2)
+                Padding = new Thickness(2),
             };
-
-            // TODO MouseLeftButtonUp += (sender, args) => MessageBox.Show($"http://www.unicodemap.org/details/{text}/index.html");
         }
     }
 }

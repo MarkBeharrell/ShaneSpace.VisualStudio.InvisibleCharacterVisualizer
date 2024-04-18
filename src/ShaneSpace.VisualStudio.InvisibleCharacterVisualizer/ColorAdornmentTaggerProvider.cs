@@ -13,16 +13,13 @@ namespace ShaneSpace.VisualStudio.InvisibleCharacterVisualizer
     [TagType(typeof(IntraTextAdornmentTag))]
     internal sealed class ColorAdornmentTaggerProvider : IViewTaggerProvider
     {
-#pragma warning disable RCS1169 // Mark field as read-only.
-#pragma warning disable SA1401 // Fields must be private
 #pragma warning disable CS0649 // something
 
         [Import]
         internal IBufferTagAggregatorFactoryService BufferTagAggregatorFactoryService;
 
-#pragma warning restore RCS1169 // Mark field as read-only.
-#pragma warning restore SA1401 // Fields must be private
 #pragma warning restore CS0649
+
         public ITagger<T> CreateTagger<T>(ITextView textView, ITextBuffer buffer)
             where T : ITag
         {

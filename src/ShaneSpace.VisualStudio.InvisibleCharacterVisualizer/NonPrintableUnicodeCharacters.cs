@@ -17,7 +17,7 @@
             "\\u2060-\\u206F",
             "\\u2072",
             "\\uFEFD-\\uFF00",
-            "\\uFFEF-\\uFFFB"
+            "\\uFFEF-\\uFFFB",
         };
     }
 }

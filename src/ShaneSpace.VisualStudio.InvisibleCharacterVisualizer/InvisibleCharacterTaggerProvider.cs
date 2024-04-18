@@ -11,6 +11,12 @@ namespace ShaneSpace.VisualStudio.InvisibleCharacterVisualizer
     [TagType(typeof(InvisibleCharacterTag))]
     internal sealed class InvisibleCharacterTaggerProvider : ITaggerProvider
     {
+        /// <summary>
+        /// Creates a tag provider for the specified buffer.
+        /// </summary>
+        /// <param name="buffer">The <see cref="ITextBuffer" />.</param>
+        /// <typeparam name="T">The type of the tag.</typeparam>
+        /// <returns>buffer.</returns>
         public ITagger<T> CreateTagger<T>(ITextBuffer buffer)
             where T : ITag
         {
